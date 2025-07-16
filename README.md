@@ -2,7 +2,7 @@
 
 My solutions and projects for Harvard's CS50x course, demonstrating programming skills across multiple languages and technologies.
 
-## 🗂️ Projects
+## Projects
 
 ### C Programming
 
@@ -37,7 +37,7 @@ My solutions and projects for Harvard's CS50x course, demonstrating programming 
 
 [Snake game implemented in C using Raylib with score tracking and dynamic memory management.](https://github.com/strandseter/cnake)
 
-## 🛠️ Technologies
+## Technologies
 
 C • Python • SQL • HTML/CSS/JavaScript • Flask • SQLite
 
