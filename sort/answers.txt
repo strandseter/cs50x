@@ -1,0 +1,11 @@
+sort1 uses: Bubble sort
+
+How do you know?: Fast on already sorted small list. Thats the best case: Ω(n). Increasingly slow on larger random/reversed lists: O(n^2).
+
+sort2 uses: Merge sort
+
+How do you know?: Not affected by the initial order of the list. The running time increases logarithmically as the lists grows: O(n log n).
+
+sort3 uses: Selection sort
+
+How do you know?: Same performance regardless of the initial order in the list: O(n^2) in all cases.

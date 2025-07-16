@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>About | Anders</title>
+        <script>
+            const calculateAge = (birthDate) => {
+                const now = new Date();
+
+                let years = now.getFullYear() - birthDate.getFullYear();
+
+                let months = now.getMonth() - birthDate.getMonth();
+                if (months < 0) {
+                    months += 12;
+                    years--;
+                }
+
+                let days = now.getDate() - birthDate.getDate();
+                if (days < 0) {
+                    const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                    days += lastMonth.getDate();
+                    months--;
+                    if (months < 0) {
+                        months += 12;
+                        years--;
+                    }
+                }
+
+                return {
+                    days,
+                    months,
+                    years,
+                }
+            };
+
+            const updateAbout = (birthDate) => {
+                const age = calculateAge(birthDate);
+                const formattedAge = `${age.years} years, ${age.months} months and ${age.days} days`;
+
+                const aboutText = `I’m a ${formattedAge} old Full Stack Developer, born and raised in Norway. I earned my Bachelor's degree in Information Technology in 2021 and have been working as a professional developer since then. Currently, I’m taking CS50 to fill knowledge gaps and refresh my fundamentals.`;
+
+                const about = document.getElementById("about");
+                about.innerHTML = aboutText;
+            };
+
+            const onLoad = () => {
+                updateAbout(new Date(1999, 7, 5));
+            };
+
+        </script>
+    </head>
+    <body onload="onLoad()">
+        <header class="shadow-sm p-3 mb-5 bg-body d-flex justify-content-between align-items-center">
+            <h3>
+                <a href="/index.html" class="text-reset text-decoration-none">Anders</a>
+            </h3>
+            <ul class="list-unstyled" id="header-menu">
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/education.html">Education</a></li>
+                <li><a href="/professional.html">Professional</a></li>
+            </ul>
+        </header>
+        <main id="main-container" class="container">
+            <h1>About</h1>
+            <div id="default-section" class="p-8">
+                <div>
+                    <img src="https://i.pravatar.cc/300" class="rounded-circle" style="width: 150px;" alt="Avatar" />
+                </div>
+                <div>
+                    <p id="about">
+                    </p>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-body p-3">
+            <p>CS50 - Problem set 8</p>
+        </footer>
+    </body>
+</html>

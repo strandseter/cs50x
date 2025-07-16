@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            const byId = (id) => document.getElementById(id);
+            const byTag = (parent, tag) => parent.getElementsByTagName(tag);
+
+            const getChoiceButtons = () => {
+                const buttonsWrapper = byId("buttons-wrapper");
+                const buttons = byTag(buttonsWrapper, "button");
+
+                return Array.from(buttons);
+            };
+
+            const CHOICES = [
+                { id: "1", isCorrect: false, text: 'August' },
+                { id: "2", isCorrect: false, text: 'September' },
+                { id: "3", isCorrect: false, text: 'October ' },
+                { id: "4", isCorrect: true, text: 'November' },
+                { id: "5", isCorrect: false, text: 'December' },
+            ];
+
+            const renderChoiceButtons = () => {
+                const choiceButtons = CHOICES.map((a) => {
+                    return `<button id=${a.id} key=${a.id} class="answer-button">${a.text}</button>`
+                }).join("");
+
+                byId("buttons-wrapper").innerHTML = choiceButtons;
+            };
+
+            const addChoiceButtonsEventListeners = () => {
+                getChoiceButtons().forEach((b) => {
+                    b.addEventListener("click", onChoiceClick(b.id));
+                });
+            };
+
+            const onChoiceClick = (choiceId) => () => {
+                getChoiceButtons().forEach((b) => {
+                    b.classList.remove("correct");
+                    b.classList.remove("incorrect");
+                });
+
+                const correctChoice = CHOICES.find((a) => a.isCorrect);
+                const isCorrect = correctChoice.id === choiceId;
+
+                const button = byId(choiceId);
+                button.classList.add(isCorrect ? "correct" : "incorrect");
+
+                const result = byId("result");
+                result.innerHTML = isCorrect ? "Correct!" : "Incorrect";
+            };
+
+            const onCheckClick = (e) => {
+                e.preventDefault();
+
+                const correct = "oslo";
+                const inputValue = event.target.querySelector('input[name="answer"]').value?.trim().toLowerCase();
+
+                const isCorrect = correct === inputValue;
+
+                const input = byId("answer");
+                input.classList.add(isCorrect ? "correct" : "incorrect");
+
+                const result = byId("input-result");
+                result.innerHTML = isCorrect ? "Correct!" : "Incorrect";
+            };
+
+            document.addEventListener("DOMContentLoaded", () => {
+                renderChoiceButtons();
+                addChoiceButtonsEventListeners();
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Which month was John Harvard born?</h3>
+                <div id="result"></div>
+                <div id="buttons-wrapper" class="buttons-wrapper"></div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is the capital of Norway?</h3>
+                <div id="input-result"></div>
+                <div class="input-wrapper">
+                    <form onsubmit="onCheckClick(event)">
+                        <input name="answer" id="answer">
+                        <input type="submit" value="Check answer">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

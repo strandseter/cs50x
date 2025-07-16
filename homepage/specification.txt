@@ -1,0 +1,31 @@
+HTML tags
+1. header
+2. h3
+3. a
+4. ul
+5. li
+6. main
+7. h2
+8. p
+9. footer
+10. div
+11. img
+12. strong
+
+CSS properties
+1. display
+2. flex-direction
+3. gap
+4. align-items
+5. position
+6. bottom
+7. width
+8. margin
+9. text-decoration
+10. bottom
+
+JavaScript
+Used to dynamically calculate, format and display my age by years, months and days on the about.html page.
+
+Boostrap
+Used to make lists of education and professional experience on the education.html and professional.html pages.

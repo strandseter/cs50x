@@ -1,0 +1,65 @@
+/* Globals */
+
+p {
+    margin: 0;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Common */
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.icon-text-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#default-section {
+    display: flex;
+    gap: 24px;
+}
+
+/* Layout */
+
+.header-list {
+    display: flex;
+    gap: 8px;
+}
+
+#header-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+}
+
+#header-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+#header-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Home page */
+
+#about {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
